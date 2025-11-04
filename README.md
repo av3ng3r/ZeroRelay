@@ -30,28 +30,40 @@ Key components will include:
 ## Quickstart
 
 ### Prerequisites
-- C++17 compatible compiler  
-- CMake 3.20+  
-- Docker (for containerized deployment)  
+- C++17 compatible compiler (GCC 10 or newer recommended)
+- CMake 3.20 or higher
+- Python 3 and pip for Conan package manager
+- Docker (optional, for containerized deployment) 
 
-### Build and Run
+### Clone and Build
 
 ```
 git clone https://github.com/yourusername/zerorelay.git
 cd zerorelay
-mkdir build && cd build
-cmake ..
-make
-./zerorelay
+
+# Install dependencies with Conan
+pip install --user conan
+conan install . --build=missing --output-folder=build/conan
+
+# Configure CMake with Conan toolchain and set build type
+cmake -S . -B build -DCMAKE_TOOLCHAIN_FILE=build/conan/conan_toolchain.cmake -DCMAKE_BUILD_TYPE=Release
+
+# Build the project
+cmake --build build
+
 ```
 
+### Run the executable
+```
+./build/ZeroRelay
+```
 Or run with Docker Compose:
-
 ```
 docker-compose up
 ```
 
-Connect a WebSocket client (e.g., `wscat`) to `ws://localhost:8080` and send messages to test the basic relay.
+### Testing
+Connect a WebSocket client like wscat to ws://localhost:8080 and send messages to test the relay functionality.
 
 ---
 
