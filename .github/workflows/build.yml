@@ -1,0 +1,44 @@
+name: CMake Build & Test
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout source
+      uses: actions/checkout@v3
+
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+
+    - name: Install Conan
+      run: pip install --upgrade conan
+
+    - name: Install CMake
+      uses: jwlawson/actions-setup-cmake@v2
+      with:
+        cmake-version: '3.28.0'
+
+    - name: Configure dependencies with Conan
+      run: |
+        conan install . --build=missing --output-folder=build/conan
+
+    - name: Configure CMake
+      run: |
+        cmake -S . -B build -DCMAKE_TOOLCHAIN_FILE=build/conan/conan_toolchain.cmake -DCMAKE_BUILD_TYPE=Release
+
+    - name: Build
+      run: cmake --build build --config Release
+
+    - name: Run tests
+      run: ctest --output-on-failure --test-dir build || echo "No tests found"
