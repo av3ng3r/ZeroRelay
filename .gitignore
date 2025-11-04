@@ -1,0 +1,49 @@
+# Ignore build directories
+/build/
+/build-*/
+
+# Ignore Conan generated files and folders
+conanbuildinfo.cmake
+conan_toolchain.cmake
+conanrun.sh
+conanbuild.sh
+conan/
+
+# CMake generated files
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+CTestTestfile.cmake
+Testing/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Mac OS files
+.DS_Store
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+
+# Compiled object files and executables
+*.o
+*.obj
+*.so
+*.dll
+*.exe
+*.out
+*.a
+*.lib
+
+# Other common patterns
+*.user
+*.userosscache
+*.sln
+*.opensdf
+*.sdf
