@@ -2,6 +2,12 @@
 
 **zerorelay** is an open source, high-performance WebSocket relay server built with C++ using Boost.Asio and Boost.Beast. It enables real-time, low-latency messaging for applications such as chat systems, live notifications, multiplayer games, and distributed event streaming.
 
+![Build Status](https://github.com/av3ng3r/ZeroRelay/actions/workflows/build.yml/badge.svg)
+![Release](https://img.shields.io/github/v/release/av3ng3r/ZeroRelay)
+![License](https://img.shields.io/github/license/av3ng3r/ZeroRelay)
+![Open Issues](https://img.shields.io/github/issues/av3ng3r/ZeroRelay)
+![Closed Issues](https://img.shields.io/github/issues-closed/av3ng3r/ZeroRelay)
+![Contributors](https://img.shields.io/github/contributors/av3ng3r/ZeroRelay)
 ---
 
 ## Features
