@@ -28,6 +28,8 @@ jobs:
       uses: jwlawson/actions-setup-cmake@v2
       with:
         cmake-version: '3.28.0'
+    - name: Configure Conan profile
+      run: conan profile detect
 
     - name: Configure dependencies with Conan
       run: |
